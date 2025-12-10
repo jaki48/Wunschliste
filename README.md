@@ -1,3 +1,3 @@
-# Wishlist
+# Wunschliste
 
-This is a small PHP-Wishlist.
+dies ist eine einfache PHP Wunschliste!

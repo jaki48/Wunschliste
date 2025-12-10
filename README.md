@@ -1,3 +1,3 @@
 # Wunschliste
 
-dies ist eine einfache PHP Wunschliste!
+Dies ist eine einfache PHP Wunschliste!

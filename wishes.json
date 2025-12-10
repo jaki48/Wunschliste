@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "name": "Wunsch 1",
+        "link": "https:\/\/jakob48.de",
+        "price": "10 EUR"
+    },
+    {
+        "id": 2,
+        "name": "Wunsch 1",
+        "link": "https:\/\/jakob48.de",
+        "price": "12 EUR"
+    }
+]

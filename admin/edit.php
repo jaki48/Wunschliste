@@ -4,16 +4,28 @@ $link = $_POST["link"];
 $price = $_POST["price"];
 $id = intval($_POST["id"]);
 
-require "../db.php";
+$jsonFile = '../wishes.json';
 
-$sql = "UPDATE wish SET name = ?, link = ?, price = ? WHERE id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("sssi", $name, $link, $price, $id);
+if (file_exists($jsonFile)) {
+    $wishes = json_decode(file_get_contents($jsonFile), true);
+    $found = false;
 
-if ($stmt->execute()) {
-	header("Location: /admin/");
-}else{
-	header("Location: /admin/?error=true");
+    foreach ($wishes as $key => $wish) {
+        if ($wish['id'] == $id) {
+            $wishes[$key]['name'] = $name;
+            $wishes[$key]['link'] = $link;
+            $wishes[$key]['price'] = $price;
+            $found = true;
+            break;
+        }
+    }
+
+    if ($found && file_put_contents($jsonFile, json_encode($wishes, JSON_PRETTY_PRINT))) {
+        header("Location: .");
+        exit;
+    }
 }
+
+header("Location: .?error=true");
 exit;
 ?>

@@ -1,16 +1,23 @@
 <?php
 $id = intval($_GET["id"]);
 
-require "../db.php";
+$jsonFile = '../wishes.json';
 
-$sql = "DELETE FROM wish WHERE id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $id);
+if (file_exists($jsonFile)) {
+    $wishes = json_decode(file_get_contents($jsonFile), true);
+    
+    $wishes = array_filter($wishes, function($wish) use ($id) {
+        return $wish['id'] != $id;
+    });
 
-if ($stmt->execute()) {
-	header("Location: /admin/");
-}else{
-    header("Location: /admin/?error=true");
+    $wishes = array_values($wishes);
+
+    if (file_put_contents($jsonFile, json_encode($wishes, JSON_PRETTY_PRINT))) {
+        header("Location: .");
+        exit;
+    }
 }
+
+header("Location: .?error=true");
 exit;
 ?>

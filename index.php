@@ -5,9 +5,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Wunschliste von <?php include 'config.php'; echo $page_name; ?></title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+		<style>
+body {
+    transition: background-color 0.3s, color 0.3s;
+	margin: 100px;
+}
+
+@media (prefers-color-scheme: dark) {
+    
+    body {
+        background-color: #1a1a1a;
+        color: #f0f0f0;
+    }
+    
+    
+    a {
+        color: #8ab4f8; 
+    }
+}
+@media (max-whidth: 600px) {
+	body {
+		margin: 8px;
+	}
+}
+		</style>
     </head>
-    <body>
+    <body">
 		<h1 style="margin: 15px;">Wunschliste von <?php include 'config.php'; echo $page_name; ?> 🎁</h1>
+		<div class="content">
         <?php
         $jsonFile = 'wishes.json';
         
@@ -38,6 +63,7 @@
 </div>';
         }
         ?>
+		</div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

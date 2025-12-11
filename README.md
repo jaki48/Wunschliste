@@ -11,5 +11,5 @@ Du kannst außerdem in der config.php deinen Namen angeben der Dan überall steh
 
 Mit in /admin befindet sich das Admin Panel wo die die einträge verwalten kanst.
 
-> [!WARNING]
+> [!Achtung]
 > Die /Admin Seite ist Standardmäßig nicht geschützt!
